@@ -5,6 +5,7 @@ public class DragCube2 : MonoBehaviour
     private Vector3 _offset;
     private float _zCoord;
     private Rigidbody _rb;
+     private bool _cubeClicked = false;
 
     private void Start()
     {
@@ -16,6 +17,10 @@ public class DragCube2 : MonoBehaviour
         _rb.useGravity = false;
         _zCoord = Camera.main.WorldToScreenPoint(transform.position).z;
         _offset = transform.position - GetMouseWorldPosition();
+        if (!_cubeClicked) {
+            _cubeClicked = true;
+           Data.Instance.CubeInteracted++;
+        }
     }
 
     private void OnMouseDrag()

@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "Mouse-Interaction-Unity-3D.sln"
+    "dotnet.defaultSolution": "TD0_Interaction-3D.sln"
 }
