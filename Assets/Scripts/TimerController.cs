@@ -9,17 +9,26 @@ public class TimerController : MonoBehaviour
   public TextMeshProUGUI _text;
   private TimeSpan _timePlaying;
   private bool _isTimerGoing;
+  private bool _isGameGoing;
 
   private void Awake()
   {
     instance = this;
   }
 
-  private void Start()
+  private void FixedUpdate()
+  {
+    if (_isGameGoing && Input.anyKeyDown && !_isTimerGoing)
+      {
+        BeginTimer();
+      }
+  }
+
+    private void Start()
   {
     _text.text = "Time: 00:00.00";
     _isTimerGoing = false;
-    BeginTimer();
+    _isGameGoing = true;
   }
 
   private void BeginTimer()
@@ -33,6 +42,7 @@ public class TimerController : MonoBehaviour
   public void EndTimer()
   {
     _isTimerGoing = false;
+    _isGameGoing = false;
   }
 
   private IEnumerator UpdateTimer()
